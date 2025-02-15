@@ -10,6 +10,14 @@ export default function App() {
      
       <HeaderContent />
       <MenuLink />
+
+      <BodyContent>
+        <button>Click Here</button>
+      </BodyContent>
+
+      <BodyContent>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum porro amet dolorum excepturi velit ullam, architecto minima atque nostrum. Laudantium non optio magnam ipsum et ea repudiandae sint ullam consequatur?</p>
+      </BodyContent>
       
     </div>
   ) 
