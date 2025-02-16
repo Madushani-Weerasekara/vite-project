@@ -4,7 +4,7 @@ import './BodyContent.css'
 export default function BodyContent(props) {
   return (
     <div id='bodycontent'>
-        <p>Body Content</p>
+        <h1>Body Content</h1>
         {props.children}
     </div>
   )

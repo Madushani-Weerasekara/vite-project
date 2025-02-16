@@ -1,7 +1,19 @@
 #navcontent{
     min-height: 20vh;
     background-color:rgb(4, 22, 22);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
     
 }
 
+#navcontent img {
+    width: 50px; /* Ensure the logo is visible */
+}
+
+#navcontent div {
+    display: flex;
+    gap: 15px; /* Space between menu links */
+}
 
