@@ -3,6 +3,9 @@ import HeaderContent from './Components/HeaderContent/HeaderContent'
 import BodyContent from './Components/BodyContent/BodyContent'
 import FooterContent from './Components/FooterContent/FooterContent'
 
+const hello = (e) => {
+  console.log("Welcome..", e)
+}
 
 export default function App() {
   return (
@@ -10,7 +13,7 @@ export default function App() {
       <HeaderContent />
 
       <BodyContent>
-        <button>Click Here</button>
+        <button onClick={hello}>Click Here</button>
       </BodyContent>
 
       <BodyContent>
