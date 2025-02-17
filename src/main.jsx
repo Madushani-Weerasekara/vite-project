@@ -5,8 +5,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import App from './App.jsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
 import BlogPage from './pages/BlogPage.jsx';
+import AboutUs from './pages/AboutUs.jsx';
+import Login from './pages/Login.jsx';
 
 // Set up routing using createBrowserRouter
 const router = createBrowserRouter([
@@ -18,6 +19,16 @@ const router = createBrowserRouter([
   {
     path: "/blog",
     element: <BlogPage/>
+  },
+
+    {
+      path: "/aboutus",
+      element: <AboutUs/>
+    },
+
+    {
+      path: "/login",
+      element: <Login/>
     },
 ]);
 

@@ -11,7 +11,13 @@ const hello = (e) => {
 export default function App() {
   return (
     <div id='wrapper'>
-      <HeaderContent />
+      <HeaderContent/>
+      
+      <BodyContent>
+      <h3>Home Page</h3>
+      </BodyContent>
+        
+       
       {/*
       <BodyContent>
         <button onClick={hello}>Click Here</button>
