@@ -10,7 +10,8 @@ export default function HeaderContent() {
         <MenuLink linkname="Home" url="#home" />
         <MenuLink linkname="About" url="#about" />
         <MenuLink linkname="Contact" url="#contact" />
-        <MenuLink linkname="Login" url="login" />
+        <MenuLink linkname="Login" url="#login" />
+     
       </div>
     </div>
        
