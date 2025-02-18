@@ -13,6 +13,7 @@ export default function App() {
 
 const [num1, setnum1] = useState(5)
 const [count, setcount] = useState(0) //state variable
+const [clicks, setclicks] = useState(0)
 
 function handleClick () {
   setnum1(3)
@@ -27,7 +28,7 @@ const incrementFunction = () => {
 }
 
 let mynumber =10;
-
+/*
 useEffect(()=>{
   //console.log('hi')
   if(mynumber == 5) {
@@ -36,6 +37,11 @@ useEffect(()=>{
     alert("Not equal to 5")
   }
 },[])
+*/
+
+useEffect(() => {
+  document.title = `You clicked ${clicks} times`;
+},[count])
 
   return (
     <div id='wrapper'>
@@ -49,6 +55,9 @@ useEffect(()=>{
       <button onClick={decrementFunction}> - </button>
       <button onClick={incrementFunction}> + </button>
       <p>{count}</p>
+
+      <p>You clicked {clicks} times</p>
+      <button onClick={()=> setclicks(clicks+1)}>Click me</button>
       </BodyContent>
         
        
