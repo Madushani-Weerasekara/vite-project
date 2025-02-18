@@ -10,10 +10,11 @@ const hello = (e) => {
 }
 */}
 export default function App() {
-
+ 
 const [num1, setnum1] = useState(5)
 const [count, setcount] = useState(0) //state variable
 const [clicks, setclicks] = useState(0)
+const [posts, setposts] = useState([])
 
 function handleClick () {
   setnum1(3)
@@ -41,16 +42,27 @@ useEffect(()=>{
 
 useEffect(() => {
   document.title = `You clicked ${clicks} times`;
-},[count])
+},[count]);
+
+useEffect(() => {
+  fetch("https://jsonplaceholder.typicode.com/users/1/posts")
+    .then((resp) => resp.json())
+    .then((blogPosts) => {
+      console.log("Fetched Posts:", blogPosts); // ✅ Check if data is coming
+      setposts(blogPosts);
+    })
+    .catch((error) => console.error("Error fetching posts:", error));
+}, []);
+
 
   return (
+    <>
     <div id='wrapper'>
       <HeaderContent/>
       
       <BodyContent>
       <h3>Home Page</h3>
       <button onClick={handleClick}> Click </button>
-      <num1></num1>
       <p> {num1}</p>
       <button onClick={decrementFunction}> - </button>
       <button onClick={incrementFunction}> + </button>
@@ -58,19 +70,24 @@ useEffect(() => {
 
       <p>You clicked {clicks} times</p>
       <button onClick={()=> setclicks(clicks+1)}>Click me</button>
-      </BodyContent>
-        
-       
-      {/*
-      <BodyContent>
-        <button onClick={hello}>Click Here</button>
+
+      <ul className='prod_list' style={{ color: 'white', paddingLeft: '20px' }}>
+      {posts.length > 0 ? (  // ✅ Only map if posts exist
+        posts.map((post) => (
+          <li key={post.id} style={{ listStyleType: "circle"}}>
+            {post.title}
+          </li>
+    ))
+  ) : (
+    <p>Loading posts...</p> // ✅ Show a message until data is available
+  )}
+</ul>
+
+
       </BodyContent>
 
-      <BodyContent>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum porro amet dolorum excepturi velit ullam, architecto minima atque nostrum. Laudantium non optio magnam ipsum et ea repudiandae sint ullam consequatur?</p>
-      </BodyContent>
-      */}
     </div>
+    </>
   ) 
 }
 
