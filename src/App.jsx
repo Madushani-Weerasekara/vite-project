@@ -15,6 +15,9 @@ const hello = (e) => {
 export default function App() {
 
   const loggedin = false;
+
+  const names = ["Madushani", "Weerasekara"]
+  const namescount = names.length;
  
   const [num1, setnum1] = useState(5)
   const [count, setcount] = useState(0) //state variable
@@ -72,6 +75,12 @@ useEffect(() => {
 
       {loggedin && <LoggedIn/>}
       {!loggedin && <LoggedOut/>}
+
+      {namescount > 0 && names.map((name)=>{
+        return <h2>{name}</h2>
+      })}
+
+      {namescount == 0 && <h2>None Provided</h2>}
       
       <BodyContent>
 
