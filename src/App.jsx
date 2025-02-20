@@ -10,11 +10,13 @@ const hello = (e) => {
 }
 */}
 export default function App() {
+
+  const loggedin = false;
  
-const [num1, setnum1] = useState(5)
-const [count, setcount] = useState(0) //state variable
-const [clicks, setclicks] = useState(0)
-const [posts, setposts] = useState([])
+  const [num1, setnum1] = useState(5)
+  const [count, setcount] = useState(0) //state variable
+  const [clicks, setclicks] = useState(0)
+  const [posts, setposts] = useState([])
 
 function handleClick () {
   setnum1(3)
@@ -58,9 +60,14 @@ useEffect(() => {
   return (
     <>
     <div id='wrapper'>
+      
       <HeaderContent/>
+
+      {loggedin && <h4>Logged in</h4>}
+      {!loggedin && <h4>Logged Out</h4>}
       
       <BodyContent>
+        
       <h3>Home Page</h3>
       <button onClick={handleClick}> Click </button>
       <p> {num1}</p>
