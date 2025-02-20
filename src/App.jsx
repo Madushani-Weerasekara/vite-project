@@ -3,6 +3,9 @@ import HeaderContent from './Components/HeaderContent/HeaderContent';
 import BodyContent from './Components/BodyContent/BodyContent';
 import FooterContent from './Components/FooterContent/FooterContent';
 import './App.css';
+import LoggedIn from './Components/LoggedIn';
+import LoggedOut from './Components/LoggedOut';
+
 
 {/*
 const hello = (e) => {
@@ -43,6 +46,10 @@ useEffect(()=>{
 */
 
 useEffect(() => {
+  document.title = `You clicked ${clicks} times`;
+}, [count]);
+
+useEffect(() => {
   fetch("https://jsonplaceholder.typicode.com/posts")
     .then((resp) => resp.json())
     .then((blogPosts) => {
@@ -63,11 +70,11 @@ useEffect(() => {
       
       <HeaderContent/>
 
-      {loggedin && <h4>Logged in</h4>}
-      {!loggedin && <h4>Logged Out</h4>}
+      {loggedin && <LoggedIn/>}
+      {!loggedin && <LoggedOut/>}
       
       <BodyContent>
-        
+
       <h3>Home Page</h3>
       <button onClick={handleClick}> Click </button>
       <p> {num1}</p>
@@ -79,13 +86,13 @@ useEffect(() => {
       <button onClick={()=> setclicks(clicks+1)}>Click me</button>
 
       <ul className='prod_list' style={{ color: 'black', paddingLeft: '20px' }}>
-  {posts.length > 0 ? (
-    posts.map((post) => (
+        {posts.length > 0 ? (
+        posts.map((post) => (
       <li key={post.id} style={{ listStyleType: "circle" }}>
         {post.title}
       </li>
-    ))
-  ) : (
+      ))
+      ) : (
     <p style={{ color: 'white' }}>Loading posts...</p>
   )}
 </ul>
