@@ -75,13 +75,18 @@ useEffect(() => {
 
       {loggedin && <LoggedIn/>}
       {!loggedin && <LoggedOut/>}
-
+{/*
       {namescount > 0 && names.map((name)=>{
         return <h2>{name}</h2>
       })}
 
       {namescount == 0 && <h2>None Provided</h2>}
-      
+*/}
+
+      {namescount > 0 ? (names.map((name) => {
+        return <h2>{names}</h2>
+      })):(<h2>None Provided</h2>)}
+
       <BodyContent>
 
       <h3>Home Page</h3>
