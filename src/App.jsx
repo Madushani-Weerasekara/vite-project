@@ -41,15 +41,15 @@ useEffect(()=>{
 */
 
 useEffect(() => {
-  document.title = `You clicked ${clicks} times`;
-},[count]);
-
-useEffect(() => {
-  fetch("https://jsonplaceholder.typicode.com/users/1/posts")
+  fetch("https://jsonplaceholder.typicode.com/posts")
     .then((resp) => resp.json())
     .then((blogPosts) => {
-      console.log("Fetched Posts:", blogPosts); // ✅ Check if data is coming
-      setposts(blogPosts);
+      console.log("Fetched Posts:", blogPosts); // Debugging step
+      if (Array.isArray(blogPosts) && blogPosts.length > 0) {
+        setposts(blogPosts);
+      } else {
+        console.error("No posts received or incorrect format:", blogPosts);
+      }
     })
     .catch((error) => console.error("Error fetching posts:", error));
 }, []);
@@ -71,17 +71,18 @@ useEffect(() => {
       <p>You clicked {clicks} times</p>
       <button onClick={()=> setclicks(clicks+1)}>Click me</button>
 
-      <ul className='prod_list' style={{ color: 'white', paddingLeft: '20px' }}>
-      {posts.length > 0 ? (  // ✅ Only map if posts exist
-        posts.map((post) => (
-          <li key={post.id} style={{ listStyleType: "circle"}}>
-            {post.title}
-          </li>
+      <ul className='prod_list' style={{ color: 'black', paddingLeft: '20px' }}>
+  {posts.length > 0 ? (
+    posts.map((post) => (
+      <li key={post.id} style={{ listStyleType: "circle" }}>
+        {post.title}
+      </li>
     ))
   ) : (
-    <p>Loading posts...</p> // ✅ Show a message until data is available
+    <p style={{ color: 'white' }}>Loading posts...</p>
   )}
 </ul>
+
 
 
       </BodyContent>
