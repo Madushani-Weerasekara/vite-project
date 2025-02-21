@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    margin-bottom: 1em;
+    padding: 1em 2em;
+    background-color: white;
+    border-radius: 1em;
+    border: 2px solid grey;
+}
+
+ul:hover {
+    border: 2px solid blue;
+}
+
+body{
+    background-color: skyblue;
+    margin: 1em;
+}
