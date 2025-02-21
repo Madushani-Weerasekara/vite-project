@@ -132,15 +132,20 @@ useEffect(() => {
       {namescount > 0 ? (names.map((name) => {
         return <h2>{names}</h2>
       })):(<h2>None Provided</h2>)}
-      
 
+
+ 
       {products.map((product =>{
         return (
-          <Products key={product.id} title={product.title} description={product.description} category={product.category} rate={product.rating.rate}/>
-        )
+          //<Products key={product.id} title={product.title} description={product.description} category={product.category} rate={product.rating.rate}/>
+          <Products key={products.id} {...product}/>
+)
       }))}  
 
-    
+ 
+
+      
+
 
       <BodyContent>
 
