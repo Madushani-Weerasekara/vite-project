@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useActionState, useEffect, useState } from 'react';
 import HeaderContent from './Components/HeaderContent/HeaderContent';
 import BodyContent from './Components/BodyContent/BodyContent';
 import FooterContent from './Components/FooterContent/FooterContent';
@@ -7,6 +7,7 @@ import LoggedIn from './Components/LoggedIn';
 import LoggedOut from './Components/LoggedOut';
 import Products from './Components/Products.jsx';
 import './Components/Products.css'
+import { useRef } from "react";
 
 
 {/*
@@ -15,6 +16,9 @@ const hello = (e) => {
 }
 */}
 export default function App() {
+
+  const [input, setinput] = useState("<Input text goes here>")
+
   const products = [
     {
       "id": 1,
@@ -65,6 +69,17 @@ export default function App() {
   const [clicks, setclicks] = useState(0)
   const [posts, setposts] = useState([])
 
+
+const countref = useRef(0);
+console.log(countref)
+
+useEffect(() => {
+  //setcount((count) => count+1)
+  countref.current = countref.current+1;
+})
+
+
+
 function handleClick () {
   setnum1(3)
 }
@@ -108,10 +123,16 @@ useEffect(() => {
 }, []);
 
 
+  const handlechange = (e) => {
+    if(e.target.value.length == 0){
+      setinput("<Input text goes here>")
+    }else{
+      setinput(e.target.value)
+    }
+  }
+
   return (
     <>
-    
-
 
     <div id='wrapper'>
       
@@ -119,6 +140,7 @@ useEffect(() => {
 
       {loggedin && <LoggedIn/>}
       {!loggedin && <LoggedOut/>}
+
 {/*
       {namescount > 0 && names.map((name)=>{
         return <h2>{name}</h2>
@@ -129,8 +151,13 @@ useEffect(() => {
 
       <h3>Home Page</h3>
 
-      {namescount > 0 ? (names.map((name) => {
-        return <h2>{names}</h2>
+      <input type='text' onChange={handlechange}/>
+      <p>You have input {input} </p>
+      {/*<p>Rendered {count}</p>*/}
+      <p>Rendered {countref.current} </p>
+
+      {namescount > 0 ? (names.map((name, index) => {
+        return <h2 key={index}>{name}</h2>
       })):(<h2>None Provided</h2>)}
 
 
@@ -138,7 +165,7 @@ useEffect(() => {
       {products.map((product =>{
         return (
           //<Products key={product.id} title={product.title} description={product.description} category={product.category} rate={product.rating.rate}/>
-          <Products key={products.id} {...product}/>
+          <Products key={product.id} {...product}/>
 )
       }))}  
 
