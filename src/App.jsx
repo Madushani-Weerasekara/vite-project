@@ -73,6 +73,10 @@ export default function App() {
 const countref = useRef(0);
 console.log(countref)
 
+const inputref = useRef();
+// console.log(inputref.current)
+inputref.current.style.backgroundColor = 'yellow'
+
 useEffect(() => {
   //setcount((count) => count+1)
   countref.current = countref.current+1;
@@ -155,6 +159,10 @@ useEffect(() => {
       <p>You have input {input} </p>
       {/*<p>Rendered {count}</p>*/}
       <p>Rendered {countref.current} </p>
+
+
+      <input type='text' ref={inputref}/>
+      
 
       {namescount > 0 ? (names.map((name, index) => {
         return <h2 key={index}>{name}</h2>
