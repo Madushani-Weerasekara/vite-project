@@ -1,4 +1,4 @@
-import React, { useActionState, useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import HeaderContent from './Components/HeaderContent/HeaderContent';
 import BodyContent from './Components/BodyContent/BodyContent';
 import FooterContent from './Components/FooterContent/FooterContent';
@@ -7,7 +7,7 @@ import LoggedIn from './Components/LoggedIn';
 import LoggedOut from './Components/LoggedOut';
 import Products from './Components/Products.jsx';
 import './Components/Products.css'
-import { useRef } from "react";
+ 
 
 
 {/*
@@ -75,7 +75,16 @@ console.log(countref)
 
 const inputref = useRef();
 // console.log(inputref.current)
-inputref.current.style.backgroundColor = 'yellow'
+// inputref.current.style.backgroundColor = 'yellow'
+
+const inputref2 = useRef();
+
+useEffect(() => {
+  if (inputref.current) {
+    inputref.current.style.backgroundColor = 'yellow';
+  }
+}, []);
+
 
 useEffect(() => {
   //setcount((count) => count+1)
@@ -135,6 +144,18 @@ useEffect(() => {
     }
   }
 
+  const handleClick1 = () => {
+    if(inputref2.current.value == ""){
+      inputref2.current.focus()
+    }
+    else if(inputref2.current.value > 50){
+      alert("Success")
+    }else{
+      alert("Error")
+    }
+    
+  }
+
   return (
     <>
 
@@ -155,20 +176,22 @@ useEffect(() => {
 
       <h3>Home Page</h3>
 
+      {namescount > 0 ? (names.map((name, index) => {
+        return <h2 key={index}>{name}</h2>
+      })):(<h2>None Provided</h2>)}
+
       <input type='text' onChange={handlechange}/>
       <p>You have input {input} </p>
       {/*<p>Rendered {count}</p>*/}
       <p>Rendered {countref.current} </p>
 
 
-      <input type='text' ref={inputref}/>
-      
+      <input type='text' />
 
-      {namescount > 0 ? (names.map((name, index) => {
-        return <h2 key={index}>{name}</h2>
-      })):(<h2>None Provided</h2>)}
-
-
+      <br></br><br></br>
+      <input type='text' ref={inputref2} />
+      <button onClick={handleClick1}>Validate</button>
+  
  
       {products.map((product =>{
         return (
