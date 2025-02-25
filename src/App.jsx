@@ -7,6 +7,8 @@ import LoggedIn from "./Components/LoggedIn";
 import LoggedOut from "./Components/LoggedOut";
 import Products from "./Components/Products.jsx";
 import "./Components/Products.css";
+import Comp1 from "./Components/comp1.jsx";
+import Comp2 from "./Components/Comp2.jsx";
 
 {
   /*
@@ -259,6 +261,8 @@ useEffect(()=>{
           <h1 className="one">Hi, Madushani Weerasekara</h1>
           <h1 className="two">Hi, Madushani Weerasekara</h1>
         </BodyContent>
+
+        <Comp1 />
       </div>
     </>
   );
