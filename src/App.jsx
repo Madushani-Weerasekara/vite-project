@@ -70,6 +70,8 @@ export default function App() {
   const [posts, setposts] = useState([])
 
 
+  let items = ["item1", "item2", "item3", "item4", "item5", "item6",]
+
 const countref = useRef(0);
 console.log(countref)
 
@@ -230,6 +232,12 @@ useEffect(() => {
   )}
 </ul>
 
+
+  <ul>
+    {items.map((item) => {
+      return <li>{item}</li>
+    })}
+  </ul>
 
 
       </BodyContent>
